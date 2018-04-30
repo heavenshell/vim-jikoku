@@ -24,6 +24,7 @@ function! s:add(ltime, utc, filename, line, col, mode)
 endfunction
 
 function! s:utc(time)
+  " @mattn, @raa0121, @itchyny and @tyru give very useful advices.
   let tz = str2nr(matchstr(strftime('%z', a:time), '\v[+-]\zs[0-9]{2}\ze[0-9]'))
   let tz_sec = tz * 60 * 60
   return a:time - tz_sec
