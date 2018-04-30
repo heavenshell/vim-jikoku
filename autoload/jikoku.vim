@@ -24,8 +24,12 @@ function! s:add(ltime, utc, filename, line, col, mode)
 endfunction
 
 function! s:utc(time)
-  let item = map(split(split(strftime('%c', '0'), ' ')[1], '[^0-9]'), 'str2nr(v:val)')
-  let tz_sec = item[0] * 60 * 60 + item[1] * 60
+  let item = split(strftime('%c', 0), ' ')
+  let hms = map(split(item[1], '[^0-9]'), 'str2nr(v:val)')
+  let tz_sec = hms[0] * 60 * 60 + hms[1] * 60
+  if item[0] !~ '^1970'
+    let tz_sec = 60 * 60 * 24 - tz_sec
+  endif
   return a:time - tz_sec
 endfunction
 
