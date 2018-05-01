@@ -24,11 +24,11 @@ function! s:add(ltime, utc, filename, line, col, mode)
 endfunction
 
 function! s:utc(time)
-  let item = split(strftime('%c', 0), ' ')
-  let hms = map(split(item[1], '[^0-9]'), 'str2nr(v:val)')
-  let tz_sec = hms[0] * 60 * 60 + hms[1] * 60
-  if item[0] !~ '^1970'
-    let tz_sec = 60 * 60 * 24 - tz_sec
+  let hm = map(split(strftime('%H %M', 0), ' '), 'str2nr(v:val)')
+  if str2nr(strftime('%Y', 0)) != 1970
+    let tz_sec = 60*60*24 - hm[0] * 60*60 - hm[1] * 60
+  else
+    let tz_sec = hm[0] * 60*60 + hm[1] * 60
   endif
   return a:time - tz_sec
 endfunction
