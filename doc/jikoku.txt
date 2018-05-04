@@ -44,11 +44,16 @@ VARIABLES					*jikoku-vim-variables*
 
 ==============================================================================
 CHANGELOG					*jikoku-vim-changelog*
+2018-05-04
+  - Add command-bar option
+
 2018-05-02
   - support minus offset (Thx @mattn)
 
 2018-05-01
   - use strftime('%c', localtime()) instead of %z (Thx @mattn)
+
 2018-04-30
   - First release
+
 vim:tw=78:ts=8:ft=help:norl:noet:fen:fdl=0:

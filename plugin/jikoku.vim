@@ -11,7 +11,7 @@ if get(b:, 'loaded_jikoku')
   finish
 endif
 
-command! -bang Jikoku :call jikoku#run(<bang>0)
+command! -bang -bar Jikoku :call jikoku#run(<bang>0)
 
 let b:loaded_jikoku = 1
 
