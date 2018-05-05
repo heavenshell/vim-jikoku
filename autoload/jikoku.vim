@@ -37,7 +37,7 @@ function! s:info() abort
   let pos = getpos('.')
   let word = expand('<cword>')
 
-  " pos[0] is lnum, pos[1] is col
+  " pos[1] is lnum, pos[2] is col
   return { 'line': pos[1], 'col': pos[2], 'word': word, 'filename': expand('%p') }
 endfunction
 
